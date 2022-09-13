@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template
+autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="junitbefore">
+
+${:import (org.junit.Before)}
+  
+@Before
+public void setUp() {
+    ${cursor}
+}
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="junitafter">
+${:import (org.junit.After)}
+  
+@After
+public void tearDown() {
+    ${cursor}
+}
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="junitbeforeclass">
+${:import (org.junit.BeforeClass)}
+  
+@BeforeClass
+public static void oneTimeSetUp() {
+    // one-time initialization code
+    ${cursor}
+}
+
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="junitafterclass">
+${:import (org.junit.AfterClass)}
+  
+@AfterClass
+public static void oneTimeTearDown() {
+    // one-time cleanup code
+    ${cursor}
+}
+
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="createlogger">
+${:import(org.slf4j.Logger,
+          org.slf4j.LoggerFactory)}
+private static final Logger LOGGER = LoggerFactory.getLogger(${enclosing_type}.class);
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="loginfo">
+LOGGER.info(${word_selection}${});
+${cursor}
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="logerror">
+LOGGER.error(${word_selection}${}, ${exception_variable_name});
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="logandthrow">
+LOGGER.error(${word_selection}${}, ${exception_variable_name});
+throw ${exception_variable_name};
+${cursor}
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="messageformat">
+ ${:import(java.text.MessageFormat)} 
+ MessageFormat.format(${word_selection}, ${cursor})
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="singleton">
+ static enum Singleton {
+    INSTANCE;
+
+    private static final ${enclosing_type} singleton = new ${enclosing_type}();
+
+    public ${enclosing_type} getSingleton() {
+        return singleton;
+    }
+}
+${cursor}
+
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="maptemplate">
+${:import(java.util.Map.Entry)}
+for (Entry<${keyType:argType(map, 0)}, ${valueType:argType(map, 1)}> ${entry} : ${map:var(java.util.Map)}.entrySet())
+{
+    ${keyType} ${key} = ${entry}.getKey();
+    ${valueType} ${value} = ${entry}.getValue();
+    ${cursor}
+}
+</template>
+
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="beanproperty">
+private ${Type} ${property};
+
+public ${Type} get${Property}() {
+    return ${property};
+}
+
+public void set${Property}(${Type} ${property}) {
+    ${propertyChangeSupport}.firePropertyChange("${property}", this.${property},     this.${property} = ${property});
+}
+</template>
+
+<template autoinsert="true" context="java" deleted="false" description="description" enabled="true" id="org.eclipse.java.ui.editor.templates.java.codetemplates.xxxcomment" name="equlanadhascode">
+${:import(org.apache.commons.lang.builder.EqualsBuilder,org.apache.commons.lang.builder.HashCodeBuilder)}
+@Override
+public boolean equals(Object obj) {
+    return EqualsBuilder.reflectionEquals(this, obj);
+}
+
+@Override
+public int hashCode() {
+    return HashCodeBuilder.reflectionHashCode(this);
+}
+
+</template>
+
+
+</templates>
